@@ -5,7 +5,7 @@ import '../services/shipping_service.dart';
 class ShippingProvider extends ChangeNotifier {
   final ShippingService _shippingService = ShippingService();
 
-  // Form data
+
   String? pickupName;
   String? pickupAddress;
   String? pickupCity;
@@ -22,7 +22,7 @@ class ShippingProvider extends ChangeNotifier {
 
   double? weight;
 
-  // State variables
+  
   List<Courier> _couriers = [];
   Courier? selectedCourier;
   ShippingQuote? shippingQuote;
@@ -31,7 +31,7 @@ class ShippingProvider extends ChangeNotifier {
 
   List<Courier> get couriers => _couriers;
 
-  // Validation methods
+  
   bool get isPickupValid =>
       pickupName?.isNotEmpty == true &&
       pickupAddress?.isNotEmpty == true &&
@@ -67,7 +67,7 @@ class ShippingProvider extends ChangeNotifier {
   bool get isReviewValid =>
       weight != null && weight! > 0 && selectedCourier != null;
 
-  // Methods to update form data
+  
   void updatePickupDetails({
     String? name,
     String? address,
@@ -113,7 +113,7 @@ class ShippingProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // API methods
+  
   Future<void> loadCouriers() async {
     try {
       isLoading = true;
