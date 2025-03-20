@@ -23,7 +23,7 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
   void initState() {
     super.initState();
     _pageController = PageController();
-    // Load couriers when screen initializes
+    
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         context.read<ShippingProvider>().loadCouriers();
@@ -34,7 +34,7 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Store provider reference
+    
     _provider = Provider.of<ShippingProvider>(context, listen: false);
   }
 
@@ -50,7 +50,7 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
     final provider = _provider;
     if (provider == null) return;
 
-    // Validate current step before proceeding
+   
     if (_currentStep == 0 && !provider.isPickupValid) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -123,13 +123,13 @@ class _BookShipmentScreenState extends State<BookShipmentScreen> {
     final provider = _provider;
     if (provider == null) return;
 
-    // Reset all form fields
+   
     provider.reset();
 
-    // Reset form key to clear validation state
+    
     _formKey.currentState?.reset();
 
-    // Reset page view to first page
+    
     setState(() {
       _currentStep = 0;
       _pageController.jumpToPage(0);
